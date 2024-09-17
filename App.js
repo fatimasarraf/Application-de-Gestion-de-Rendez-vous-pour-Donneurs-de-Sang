@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import Connexion from './connexion';
+import Home from './Home';
+import Compte from './Compte';
+import { NavigationContainer } from '@react-navigation/native';
+import {createStackNavigator} from  '@react-navigation/stack';
+import 'react-native-gesture-handler';
+import Info from './Info';
+import Centers from './Centres';
+import Rendezvous from './Rendezvous';
+import Inscription from './Inscription';
+import Mesrendezvous from './Mesrendezvous';
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      
+      <Stack.Navigator initialRouteName="Connexion" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Connexion"  component={Connexion} />
+        <Stack.Screen name="inscription" component={Inscription} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Compte" component={Compte} />
+        <Stack.Screen name="Rendezvous" component={Rendezvous} />
+        <Stack.Screen name="Centers" component={Centers} />
+        <Stack.Screen name="Mesrendezvous" component={Mesrendezvous} />
+        <Stack.Screen name="MoreInfo" component={Info} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
+
+
